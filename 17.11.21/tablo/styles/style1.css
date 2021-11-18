@@ -1,0 +1,27 @@
+.two{
+    float: bottom;
+    height: 25%;
+}
+.one{
+
+    height: 50%;
+    float: bottom;
+}
+.three{
+    float: bottom;
+    height: 50%;
+}
+.six {
+    float: left;
+}
+.ff {
+    float: bottom;
+}
+.kno {
+    display: inline-block;
+    background: green;
+    color: #fff;
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    border-radius: 3px;
+}
