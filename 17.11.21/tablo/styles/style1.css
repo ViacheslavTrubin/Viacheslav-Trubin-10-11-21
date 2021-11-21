@@ -25,3 +25,161 @@
     text-decoration: none;
     border-radius: 3px;
 }
+
+body{
+    margin: 0;
+    font-family: 'FuturaPT',Arial,sans-serif;
+}
+.header-site{
+    background: green;
+    color: #061524;
+    padding: 20px;
+    padding-left: 30px;
+    overflow:hidden;
+
+}
+
+.header-site h1{
+    font-size: 20px;
+    margin:0;
+    text-transform: uppercase;
+    float:left;
+}
+.main-menu{
+    float: right;
+
+}
+.main-menu ul{
+    padding: 0;
+    margin: 0;
+}
+.main-menu ul li{
+    list-style: none;
+    display: inline;
+    margin-right: 150px;
+
+    text-transform: uppercase;
+}
+.main-menu ul li a{
+    text-decoration: none;
+    color: black;
+}
+.main-menu ul li a:hover{
+    color: yellowgreen;
+}
+
+
+
+}
+div{
+    text-align: center;
+    background-color: burlywood;
+}
+a:hover{
+    color: yellow;
+}
+a:active{
+    color: red;
+}
+section{
+    background-color: gray;
+    display: flex;
+    flex-direction: row;
+   flex-wrap: nowrap;
+    justify-content: space-around;
+
+}
+.1one {
+    width: 20%;
+    height: 20%;
+
+    margin: 10px 10px 10px 10px;
+    flex: 1;
+
+  }
+body{
+    padding: 0px;
+}
+.grid_cont{
+    background-color: burlywood;
+ display: grid;
+    margin-top:10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    grid-template-rows:auto;
+    grid-template-columns: 50% 50%;
+    grid-template-areas:
+            'k1 k2'
+            'k3 k4';}
+.A {
+    grid-area: k1;
+}
+
+.B {
+    grid-area: k2;
+}
+
+.C {
+    grid-area: k3;
+}
+
+.D {
+    grid-area: k4;
+}
+.new_header{
+    display: grid;
+    margin-top:10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    grid-template-rows:auto;
+    grid-template-columns: 50% 50%;
+    grid-template-areas:
+            'ico tm'}
+.top {
+    grid-area: ico;
+}
+
+.Tm {
+    margin-top:15px;
+    float: right;
+    grid-area: tm;
+}
+
+.tablo{
+    background-color: cadetblue;
+    border-style: solid;
+    display: grid;
+    margin-top:10px;
+    margin-bottom: 10px;
+    padding: 0px;
+    grid-template-rows:auto;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+    grid-template-areas:
+            'ph na na'
+            'ph ab ot';}
+.photo {
+    padding: 0px;
+    border-style: solid;
+    grid-area: ph;
+}
+
+.name {
+    padding: 0px;
+    background-color: royalblue;
+    grid-area: na;
+    border-style: solid;
+}
+
+.about {
+    padding: 0px;
+    background-color: royalblue;
+    grid-area: ab;
+    border-style: solid;
+}
+
+.otziv {
+    padding: 0px;
+    background-color: royalblue;
+    border-style: solid;
+
+    grid-area: ot;}
