@@ -1,3 +1,4 @@
+
 .two{
     float: bottom;
     height: 25%;
@@ -18,7 +19,7 @@
     float: bottom;
 }
 .kno {
-    display: inline-block;
+    /*display: inline-block;*/
     background: green;
     color: #fff;
     padding: 1rem 1.5rem;
@@ -33,7 +34,7 @@ body{
 .header-site{
     background: green;
     color: #061524;
-    padding: 20px;
+    /*padding: 20px;*/
     padding-left: 30px;
     overflow:hidden;
 
@@ -45,8 +46,11 @@ body{
     text-transform: uppercase;
     float:left;
 }
+.top{
+    float: left;
+}
 .main-menu{
-    float: right;
+    float: left;
 
 }
 .main-menu ul{
@@ -57,10 +61,11 @@ body{
     list-style: none;
     display: inline;
     margin-right: 150px;
-
+    /*float: right;*/
     text-transform: uppercase;
 }
 .main-menu ul li a{
+
     text-decoration: none;
     color: black;
 }
@@ -70,10 +75,9 @@ body{
 
 
 
-}
 div{
     text-align: center;
-    background-color: burlywood;
+  /*  background-color: burlywood;*/
 }
 a:hover{
     color: yellow;
@@ -81,28 +85,47 @@ a:hover{
 a:active{
     color: red;
 }
-section{
-    background-color: gray;
-    display: flex;
-    flex-direction: row;
-   flex-wrap: nowrap;
-    justify-content: space-around;
 
-}
-.1one {
-    width: 20%;
-    height: 20%;
 
-    margin: 10px 10px 10px 10px;
-    flex: 1;
 
-  }
 body{
-    padding: 0px;
+  padding: 0;
 }
+
+.cont1{
+    background-color: burlywood;
+    font-size: 20px;
+    display: grid;
+    margin-top:10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    grid-template-rows:auto;
+    grid-template-columns: 20% 20% 20% 20%;
+    grid-template-areas:
+            'k11 k22 k33 k44 k55';}
+.a {
+    grid-area: k11;
+}
+
+.b {
+    grid-area: k22;
+}
+
+.c {
+    grid-area: k33;
+}
+
+.d {
+    grid-area: k44;
+}
+.e {
+    grid-area: k55;
+}
+
 .grid_cont{
     background-color: burlywood;
- display: grid;
+    font-size: 20px;
+    display: grid;
     margin-top:10px;
     margin-bottom: 10px;
     padding: 10px;
@@ -137,6 +160,7 @@ body{
             'ico tm'}
 .top {
     grid-area: ico;
+
 }
 
 .Tm {
@@ -147,39 +171,208 @@ body{
 
 .tablo{
     background-color: cadetblue;
+    font-size: 20px;
     border-style: solid;
     display: grid;
     margin-top:10px;
     margin-bottom: 10px;
-    padding: 0px;
+    padding: 0;
     grid-template-rows:auto;
     grid-template-columns: 33.3% 33.3% 33.3%;
     grid-template-areas:
             'ph na na'
             'ph ab ot';}
 .photo {
-    padding: 0px;
+    padding: 0;
     border-style: solid;
     grid-area: ph;
 }
 
 .name {
-    padding: 0px;
+    padding: 0;
     background-color: royalblue;
     grid-area: na;
     border-style: solid;
 }
 
 .about {
-    padding: 0px;
+    padding: 0;
     background-color: royalblue;
     grid-area: ab;
     border-style: solid;
 }
 
 .otziv {
-    padding: 0px;
+    padding: 0;
     background-color: royalblue;
     border-style: solid;
+    grid-area: ot;
+}
 
-    grid-area: ot;}
+.foot{
+    background-color: burlywood;
+    display: grid;
+    margin-top:10px;
+    margin-bottom: 10px;
+    padding: 0;
+    grid-template-rows:auto;
+    grid-template-columns: 14% 14% 14% 14% 14% 14%;
+    grid-template-areas:
+            'kont kont kont vk inst face';}
+.kont {
+    text-align: left;
+    font-size: 30px;
+    margin-top: 20px;
+    grid-area: kont;
+}
+
+.vk {
+
+    grid-area: vk;
+}
+
+.inst {
+    grid-area: inst;
+}
+.face {
+
+    grid-area: face;
+}
+.kont{
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+.vk, .inst, .face{
+    margin-top: 10px;
+    margin-left: 70px;}
+.name1{
+
+}
+@media screen and (max-width: 400px){
+
+    div{
+        flex-direction: column;
+
+    }
+    main{
+        flex-direction: column;
+    }
+    .tablo{
+
+        display: grid;
+        font-size: 25px;
+        background-color: cadetblue;
+        border-style: solid;
+        align-items: center;
+        margin-top:10px;
+        margin-bottom: 10px;
+        padding: 10px;
+        grid-template-rows:auto;
+        grid-template-columns: 50% 50%;
+       grid-template-areas:
+            'ph ph'
+            'na na'
+            'ab ab'
+            'ot ot';}
+
+    .cont1{
+        background-color: burlywood;
+        font-size: 25px;
+        margin-top:10px;
+        margin-bottom: 10px;
+        padding: 10px;
+        grid-template-rows:auto;
+        grid-template-columns: 100%;
+        grid-template-areas:
+            'k11'
+            'k22'
+            'k33'
+            'k44'
+            'k55';}
+
+    .grid_cont{
+        background-color: burlywood;
+        font-size: 25px;
+        margin-top:10px;
+        margin-bottom: 10px;
+        padding: 10px;
+        grid-template-rows:auto;
+        grid-template-columns: 100% ;
+        grid-template-areas:
+            'k1'
+            'k2'
+            'k3'
+            'k4';}
+    .foot{
+        background-color: burlywood;
+        display: grid;
+        margin-top:10px;
+        margin-bottom: 10px;
+        padding: 0;
+        grid-template-rows:auto;
+        grid-template-columns: 33% 33% 33%;
+        grid-template-areas:
+            'kont kont kont'
+
+            'vk inst face';}
+    .kont{
+    text-align: center;
+    }
+
+    }
+
+
+
+@media screen and (min-width: 401px) and (max-width: 1000px){
+
+
+    .tablo{
+        font-size: 20px;
+        background-color: cadetblue;
+        border-style: solid;
+
+        margin-top:10px;
+        margin-bottom: 10px;
+        padding: 0;
+        grid-template-rows:auto;
+        grid-template-columns: 50% 50%;
+        grid-template-areas:
+            'ph ph'
+            'na na'
+            'ab ab'
+            'ot ot';}
+
+    .cont1{
+        background-color: burlywood;
+        font-size: 20px;
+        margin-top:10px;
+        margin-bottom: 10px;
+        padding: 10px;
+        grid-template-rows:auto;
+        grid-template-columns: 50% 50%;
+        grid-template-areas:
+            'k11 k22'
+            'k33 k44'
+            'k55 k55';}
+
+    .grid_cont{
+        background-color: burlywood;
+        font-size: 20px;
+        margin-top:10px;
+        margin-bottom: 10px;
+        padding: 10px;
+        grid-template-rows:auto;
+        grid-template-columns: 100% ;
+        grid-template-areas:
+            'k1'
+            'k2'
+            'k3'
+            'k4';}
+    .kont{
+        margin-bottom: 20px;
+        margin-left: 20px;
+    }
+    .vk, .inst, .face{
+        margin-left: 70px;
+        margin-top: 15px;}
+}
