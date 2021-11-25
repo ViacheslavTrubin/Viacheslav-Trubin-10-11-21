@@ -75,6 +75,10 @@ body{
 
 
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> fdf69f395dee25a572ccd0ca27c827f8695e11fc
 div{
     text-align: center;
   /*  background-color: burlywood;*/
@@ -85,7 +89,21 @@ a:hover{
 a:active{
     color: red;
 }
+<<<<<<< HEAD
+section {
+    background-color: gray;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
 
+.1one {
+    width: 20%;
+    height: 20%;
+=======
+
+>>>>>>> fdf69f395dee25a572ccd0ca27c827f8695e11fc
 
 
 body{
@@ -189,7 +207,12 @@ body{
 }
 
 .name {
+<<<<<<< HEAD
+    padding: 0px;
+
+=======
     padding: 0;
+>>>>>>> fdf69f395dee25a572ccd0ca27c827f8695e11fc
     background-color: royalblue;
     grid-area: na;
     border-style: solid;
@@ -247,6 +270,16 @@ body{
     margin-left: 70px;}
 .name1{
 
+<<<<<<< HEAD
+    grid-area: ot;}
+
+.night{
+    background: red;
+}
+.day {
+    background: blue;
+}
+=======
 }
 @media screen and (max-width: 400px){
 
@@ -376,3 +409,4 @@ body{
         margin-left: 70px;
         margin-top: 15px;}
 }
+>>>>>>> fdf69f395dee25a572ccd0ca27c827f8695e11fc
