@@ -1,45 +1,15 @@
 <?php
-/* if (date('H') > 21 && date('H') < 6){
-    $style = 'night.css;
-} else {
-    $style = 'day.css'; через стили смена фона нужно подключать отдельные css
-}
-*/if (date('H') > 20 && date('H') < 6){
+
+if (date('H') > 20 && date('H') < 6){
     $bg = 'white';
     $color = '#fff';
 } else {
     $bg = 'rebeccapurple';
     $color = '#000';
 }
-
+require_once '../inc/header.php';
 ?>
-<!doctype html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Табличка</title>
-    <link rel="stylesheet" href="../styles/style1.css" >
-    <style type="text/css">
-        body{
-            background: <?php echo $bg; ?>;
-            color: <?php $color ?>
-        }
-    </style>
-</head>
 
-
-<body vlink="black">
-<header class = "header-site">
-    <div class="new_header">
-        <h1 class="top" align="left"><img src="../image/2.png" height="50px" alt=""></h1>
-        <nav class="main-menu">
-            <ul>
-                <li class="Tm" ><a href="into.html" >Таблица Менделеева</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
-</body>
 
 <main >
     <section class="tablo">
@@ -57,15 +27,15 @@
 <hr color="red">
 <body>
 <section class="cont1">
-    <div class="1one"><img src="../image/k1.jpg" alt="">
+    <div class="one1"><img src="../image/k1.jpg" alt="">
         <div class="2one" align="center"> Котик удивлен</div></div>
-    <div class="1one"><img src="../image/k2.jpg" alt="">
+    <div class="one1"><img src="../image/k2.jpg" alt="">
         <div class="2one" align="center"> Котик отдыхает</div></div>
-    <div class="1one"><img src="../image/k3.jpg" alt="">
+    <div class="one1"><img src="../image/k3.jpg" alt="">
         <div class="2one" align="center"> Котик кушает</div></div>
-    <div class="1one"><img src="../image/k4.png" alt="">
+    <div class="one1"><img src="../image/k4.png" alt="">
         <div class="2one" align="center"> Котик милаш</div></div>
-    <div class="1one"><img src="../image/k5.png" alt="">
+    <div class="one1"><img src="../image/k5.png" alt="">
         <div class="2one" align="center"> Котик рад</div></div>
 </section>
 </body>
@@ -88,11 +58,9 @@
 </section>
 </body>
 <hr color="red">
-<footer>
-    <section>
-        <div>Контакты</div>
-    </section>
-</footer>
+<?php
+require_once '../inc/footer.php'
+?>
 
 
 </html>
