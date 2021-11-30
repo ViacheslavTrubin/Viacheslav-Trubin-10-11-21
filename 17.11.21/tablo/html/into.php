@@ -1,12 +1,5 @@
 <?php
 
-if (date('H') > 20 && date('H') < 6){
-    $bg = 'white';
-    $color = '#fff';
-} else {
-    $bg = 'rebeccapurple';
-    $color = '#000';
-}
 require_once '../inc/header.php';
 ?>
 <!doctype html>
@@ -415,5 +408,5 @@ require_once '../inc/header.php';
 <body><div class="foot">
 <?php
 require_once '../inc/footer.php'
-?></div></body>>
+?><!--</div></body>>-->
 </html>

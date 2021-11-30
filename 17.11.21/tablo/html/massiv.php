@@ -65,12 +65,46 @@ var_dump(count($array_odnom));
 echo '<br>';
 echo 'Количество всех элементов<br>';
 var_dump(count($array_odnom, COUNT_RECURSIVE) - (count($array_odnom)));
+echo '<br>';
+echo '<br>';
+echo '<h2>Строки вторая задача</h2>';
+
+$str1 = "Трубин Вячеслав Сергеевич";
+$arr1 = explode(' ', $str1);
+$arr2[0] = $arr1[1];
+$arr2[1] = $arr1[0];
+$new_arr = array_reverse($arr2);
+$new_arr = implode(" ", $new_arr);
+print_r($new_arr);
+
+echo '<br>';
+echo '<br>';
+echo '<h2>Строки третья задача</h2>';
+
+$str2 = "Привет мир";
+echo substr_count($str2, 'и');
+
+echo '<br>';
+echo '<br>';
+echo '<h2>Строки четвертая задача</h2>';
+
+$str3 = "html css php";
+$arr3 = explode(' ', $str3);
+print_r($arr3);
+
+echo '<br>';
+echo '<br>';
+echo '<h2>Строки пятая задача</h2>';
+
+
+$date1 = date_create("25-02-2016");
+$date2 = date_create("30-11-2021");
+$result = date_diff($date1,$date2);
+echo "Количество дней : ". $result->days;
+echo '<br>';
+echo '<br>';
 
 ?>
-
-
-
-
 <?php
 require_once '../inc/footer.php'
 ?>
