@@ -3,42 +3,81 @@
 require_once '../inc/header.php';
 
 //4 задача
-date_default_timezone_set('Asia/Yekaterinburg');
-$to = date("d-m-Y");
-$from = date("13-01-1992"); //не знал как привязать дату из html
-$day1 = (strtotime($to) - strtotime($from)) / (60 * 60 * 24);
+function data(&$day1)
+{
+    $to = date("d-m-Y");
+    $from = date("13-01-1992");
+    date_default_timezone_set('Asia/Yekaterinburg');
+
+    $day1 = (strtotime($to) - strtotime($from)) / (60 * 60 * 24);
+    echo ("Количество дней ".round($day1));
+    return $day1;
+
+}
+$day1 = 4;
+
+
 //2 задача
 error_reporting(E_ALL & ~E_NOTICE);
-$text = "Катаюсь на сноуборде и горном Велосипеде.
+function glass(&$glass)
+{
+    $text = "Катаюсь на сноуборде и горном Велосипеде.
             Играю в баскетбол,веду спортивный образ жизни, хорошо разбираюсь в компьютерах,
             практикуюсь в игре на барабанах, люблю копаться в автомобилях, занимаюсь монтажем а так же съемкой видео";
-$text2 = preg_replace("/[АЕИОУЭЫЮЯаеиоуэыюя]/", "", $text);
-$glas = strlen($text) - strlen($text2);
+    $text2 = preg_replace("/[АЕИОУЭЫЮЯаеиоуэыюя]/", "", $text);
+    $glas = strlen($text) - strlen($text2);
+    echo ("Количество гласных ". "$glas");
+    return $glass;
+}
+$glass = 2;
+
+
 //3 задача
 error_reporting(E_ALL & ~E_NOTICE);
-$text3 = "Катаюсь на сноуборде и горном Велосипеде.
+function slovo(&$slovo)
+{
+    $text3 = "Катаюсь на сноуборде и горном Велосипеде.
             Играю в баскетбол,веду спортивный образ жизни, хорошо разбираюсь в компьютерах,
             практикуюсь в игре на барабанах, люблю копаться в автомобилях, занимаюсь монтажем а так же съемкой видео";
-$text4 = preg_replace("/[ ]/", "", $text3);
-$prob = strlen($text3) - strlen($text4);
-$slovo = $prob + 1;
+    $text4 = preg_replace("/[ ]/", "", $text3);
+    $prob = strlen($text3) - strlen($text4);
+    $slovo = $prob + 1;
+    echo ("Количество слов ". "$slovo");
+    return $slovo;
+}
+$slovo = 3;
+
 //1 задача
-//$str1 = "Понравился ситль подачи информации, и все же порой тяжело ловить с первого раза что доносит преподаватель";
-//$str2 = explode(' ',$str1);
-//For ($i = 1; $i <= 15; $i++)
-//foreach ($str2 as $num){
-//    if  ($i++/2==0) {
-//        echo '<p style="color: gray">' . $num . '</p>' ;
-//            }
-//    else
-//        echo '<p style="color: cadetblue">' . $num . '</p>' ;
+function para(&$fin)
+{
+    $str1 = "Понравился ситль подачи информации, и все же порой тяжело ловить с первого раза что доносит преподаватель";
+    $str2 = explode(' ', $str1);
+    for ($i = 1; $i <= 15; $i++)
+        foreach ($str2 as $item => $element) {
+            ($item % 2 === 0) ? $str2[$item] = "<span style = 'color:firebrick'>$element</span>" : $str2[$item] = "<span style = 'color:goldenrod'>$element</span>";
+        }
+    $fin = implode(' ', $str2);
+    echo $fin;
+    return $fin;
+}
+$fin = 1;
 
-//echo '<p style="color: red">' . $str1['inf'] . '</p>' ;
-// По задачам делал на кусочках так как не понял как извлечь из html текст
-
-
+function about(&$about2)
+{
+    $about = "Катаюсь на сноуборде и горном Велосипеде.
+            Играю в баскетбол,веду спортивный образ жизни, хорошо разбираюсь в компьютерах,
+            практикуюсь в игре на барабанах, люблю копаться в автомобилях, занимаюсь монтажем 
+            а так же съемкой видео";
+    $aboutarr = explode(".", $about);
+    $aboutarr[0] = "<span style = 'color:blue'>$aboutarr[0]</span>";
+    $about2 = implode('. ', $aboutarr);
+    echo $about2;
+    return $about2;
+}
+$about2 = 1;
 
 ?>
+
 
 
 <main >
@@ -48,27 +87,28 @@ $slovo = $prob + 1;
             <p class="name1">Вячеслав Трубин</p>
             <p class="name2">
                 <?php
-                echo $from;
+                echo "Дата текущая " . date("d-m-Y");
                 echo "</br>";
-                echo $to;
+                echo "День Рождения " . date("13-01-1992");
                 echo "</br>";
-                echo ("Количество дней ".round($day1));
+                data($day1);
                 echo "</br>";
-                echo ("Количество гласных ". "$glas");
+                glass($glass);
                 echo "</br>";
-                echo ("Количество слов ". "$slovo");
+                slovo($slovo);
 
                 ?>
 
             </p>
         </div>
-        <div class="about"><span class="colortext">Катаюсь на сноуборде</span> и горном Велосипеде.
-            Играю в баскетбол,веду спортивный образ жизни, хорошо разбираюсь в компьютерах,
-            практикуюсь в игре на барабанах, люблю копаться в автомобилях, занимаюсь монтажем а так же съемкой видео
-
+        <div class="about"><?php
+            about($about2);
+            ?>
         </div>
-        <div class="otziv"><span class="colortext2">Понравился ситль подачи информации, и все же порой тяжело ловить с первого раза что доносит преподаватель
-        </span>
+        <div class="otziv">
+            <?php
+            para($fin);
+            ?>
         </div>
 
     </section>
