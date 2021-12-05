@@ -32,6 +32,7 @@ if (date('H') > 20 && date('H') < 6){
         <h1 class="top" align="left"><img src="../image/2.png" height="50px" alt=""></h1>
         <nav class="main-menu">
             <ul>
+                <li class="Tm" ><a href="../inc/avtor.php" >Войти</a></li>
                 <li class="Tm" ><a href="../html/massiv.php" >Массивы</a></li>
                 <li class="Tm" ><a href="../html/into.php" >Таблица Менделеева</a></li>
                 <li class="Tm" ><a href="../html/site.php" >Главная</a></li>
