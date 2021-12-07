@@ -1,8 +1,34 @@
 <?php
 require_once '../inc/header.php';
+session_start();
+$_SESSION['login'] = $_POST['login'];
+
+
+
 $name = sha1('admin');
 $passwd = sha1('admin');
 mail("mgn.ru", $_POST['login'], md5($_POST['password']), "mgn2.ru");
+setcookie('color',$_COOKIE['color'], time() + 3600 * 24 * 7);
+
+print_r($_COOKIE);
+
+session_unset();
+unset($_SESSION['login']); //удаление переменных сессии
+
+//if (!empty($argv) && array_key_exists('1', $argv) && mb_strlen($argv[1]) > 2) {
+if (isset($_POST["submit5"])) {
+
+    if ($_POST['color'] = 1) {
+
+        $bg = 'green';
+        $_COOKIE['color'] = $bg;
+        //$color = '#fff';
+    } else
+
+        $bg = 'blue';
+    $_COOKIE['color'] = $bg;
+   // $color = 'darkblue';
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -12,14 +38,22 @@ mail("mgn.ru", $_POST['login'], md5($_POST['password']), "mgn2.ru");
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Авторизация</title>
+    <style>
+    body{
+    background: <?php echo $bg; ?>;
+
+    }</style>
     <link rel="stylesheet" href="../styles/style1.css" >
 </head>
 <body>
+
 <?php
       if(isset($_POST['submit'])):
     $name2 = sha1($_POST['login']);
     $passwd2 = sha1($_POST['password']);
-    echo ($name == $name2 && $passwd == $passwd2) ? '<p>Доступ открыт Добро пожаловать АДМИН</p>' : '<p>Невепный логин пароль</p>';
+    echo ($name == $name2 && $passwd == $passwd2) ? '<p>Доступ открыт Добро пожаловать АДМИН</p> 
+<p>Последний посещенный сайт</p>'. $_COOKIE['site']
+          : '<p>Неверный логин пароль</p>';
 else:
     ?>
 
@@ -31,7 +65,16 @@ else:
     <input type="submit" name = "submit" value="Проверить">
 
 </form>
+
 <? endif;?>
+<hr color="red">
+<div>
+
+    <a href="bitrix.php" name="site">Сайт Битрикс</a>
+    <a href="Fact.php" name="site">Caйт Факт</a>
+
+
+</div>
 <hr color="red">
 <p>Анкета пользователя</p>
 <?
@@ -120,21 +163,30 @@ echo '<form name="form2" action="" method="post">
     
     <input type="submit" name="submit2" value="Отправить"><br>
     </form>';
-if(isset($_POST["submit2"])){
-    echo 'Сумма баллов составила ' . array_sum($_POST['v']) . " баллов <br>";
-}
-$su = array_sum($_POST['v']);
-if ($su > 15) {
-    echo "У Вас покладистый характер<br>";
-    if ($su <= 15 & $su >= 8){
-      echo "Вы не лишены недостатков, но с вами можно ладить<br>";}
-         }
-    else
-        echo "Вашим друзьям можно посочувствовать<br>";
 
+!empty($_POST);
+    if (isset($_POST["submit2"])) {
+        echo 'Сумма баллов составила ' . array_sum($_POST['v']) . " баллов <br>";
+
+    $su = array_sum($_POST['v']);
+    if ($su > 15) {
+        echo "У Вас покладистый характер<br>";}
+        if ($su <= 15 & $su >= 8) {
+            echo "Вы не лишены недостатков, но с вами можно ладить<br>";
+        }
+if ($su < 8) {
+        echo "Вашим друзьям можно посочувствовать<br>"; }}
 
 
     ?>
+<hr color="red">
+<p>Выбор цвета</p>
+<select class="form-control" id="mySelect" name="mySelect">
+    <option name="color" value="1" >синий</option>
+    <option name="color" value="2">зеленый</option>
+    <input type="submit" name="submit5">
+    </select>
+
 </body>
 <? require_once '../inc/footer.php' ?>
 </html>
