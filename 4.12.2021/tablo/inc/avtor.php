@@ -1,34 +1,22 @@
 <?php
-require_once '../inc/header.php';
+
 session_start();
 $_SESSION['login'] = $_POST['login'];
 
-
+//require_once '../inc/header.php';
 
 $name = sha1('admin');
 $passwd = sha1('admin');
 mail("mgn.ru", $_POST['login'], md5($_POST['password']), "mgn2.ru");
-setcookie('color',$_COOKIE['color'], time() + 3600 * 24 * 7);
+setcookie('color', $_COOKIE['color'] , time() + 3600 * 24 * 7);
 
-print_r($_COOKIE);
 
-session_unset();
-unset($_SESSION['login']); //удаление переменных сессии
 
-//if (!empty($argv) && array_key_exists('1', $argv) && mb_strlen($argv[1]) > 2) {
-if (isset($_POST["submit5"])) {
+//session_unset();
+//unset($_SESSION['login']); //удаление переменных сессии
 
-    if ($_POST['color'] = 1) {
 
-        $bg = 'green';
-        $_COOKIE['color'] = $bg;
-        //$color = '#fff';
-    } else
 
-        $bg = 'blue';
-    $_COOKIE['color'] = $bg;
-   // $color = 'darkblue';
-}
 ?>
 <!doctype html>
 <html lang="en">
@@ -38,15 +26,15 @@ if (isset($_POST["submit5"])) {
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Авторизация</title>
-    <style>
-    body{
-    background: <?php echo $bg; ?>;
 
-    }</style>
     <link rel="stylesheet" href="../styles/style1.css" >
 </head>
 <body>
+<style>
+    body{
+        background: <?php echo $_COOKIE['color']; ?>;
 
+    }</style>
 <?php
       if(isset($_POST['submit'])):
     $name2 = sha1($_POST['login']);
@@ -180,13 +168,40 @@ if ($su < 8) {
 
     ?>
 <hr color="red">
-<p>Выбор цвета</p>
-<select class="form-control" id="mySelect" name="mySelect">
+<p>Выбор цвета фона страницы</p>
+<form action="" method="post" name="color">
+<select class="form-control" id="mySelect" name="color">
     <option name="color" value="1" >синий</option>
     <option name="color" value="2">зеленый</option>
-    <input type="submit" name="submit5">
+    <option name="color" value="3">желтый</option>
+    <option name="color" value="4">красный</option>
+    <option name="color" value="5">белый</option>
+    <input type="submit" name="submit5" value="Покрасить">
     </select>
-
+</form>
 </body>
-<? require_once '../inc/footer.php' ?>
+<?
+if (isset($_POST["submit5"])) {
+
+    if ($_POST['color'] == 1) {
+        $bg = "blue";
+        $_COOKIE['color'] = $bg;}
+    if ($_POST['color'] == 2) {
+        $bg = "green";
+        $_COOKIE['color'] = $bg;}
+    if ($_POST['color'] == 3) {
+        $bg = "yellow";
+        $_COOKIE['color'] = $bg;}
+    if ($_POST['color'] == 4) {
+        $bg = "red";
+        $_COOKIE['color'] = $bg;}
+}
+else {
+    $bg = "white";
+    $_COOKIE['color'] = $bg;
+}
+
+$bg = $_COOKIE['color'];
+print_r($_COOKIE);
+require_once '../inc/footer.php' ?>
 </html>
