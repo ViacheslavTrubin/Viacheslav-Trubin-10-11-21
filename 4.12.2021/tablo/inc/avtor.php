@@ -1,9 +1,57 @@
 <?php
-
+require_once '../inc/header.php';
 session_start();
+
+if (isset($_POST["submit5"])) {
+
+    if ($_POST['color'] == 1) {
+        $bg = "blue";
+        $_COOKIE['color'] = $bg;}
+    if ($_POST['color'] == 2) {
+        $bg = "green";
+        $_COOKIE['color'] = $bg;}
+    if ($_POST['color'] == 3) {
+        $bg = "yellow";
+        $_COOKIE['color'] = $bg;}
+    if ($_POST['color'] == 4) {
+        $bg = "red";
+        $_COOKIE['color'] = $bg;}
+}
+else {
+    $bg = $_COOKIE['color'];
+    $_COOKIE['color'] = $bg;
+}
+
+$bg = $_COOKIE['color'];
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+$hostname = 'localhost';
+$username = 'Viacheslav';
+$password = '58371234';
+$dbname = 'Logins';
+
+$dbconnect = mysqli_connect($hostname,$username, $password) or die ("Not connect");
+//var_dump($dbconnect);
+$database = mysqli_select_db($dbconnect, $dbname) or die("Could not do");
+
+mysqli_set_charset($dbconnect, 'utf8');
+mysqli_query($dbconnect, "CREATE DATABASE $dbname");
+$login2 = $_POST['login'];
+$password2 = md5($_POST['password']);
+if (!empty($_POST)) {
+    mysqli_query($database, "CREATE TABLE Vvod (ID_nomer int not NULL AUTO_INCREMENT, Login string, Password string, PRIMARY KEY (ID_nomer))");
+    mysqli_query($database, "INSERT INTO VVod (ID_nomer, Login, Password) VALUES (null, $login2  , $password2)");
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 $_SESSION['login'] = $_POST['login'];
 
-//require_once '../inc/header.php';
+
 
 $name = sha1('admin');
 $passwd = sha1('admin');
@@ -43,6 +91,8 @@ setcookie('color', $_COOKIE['color'] , time() + 3600 * 24 * 7);
 <p>Последний посещенный сайт</p>'. $_COOKIE['site']
           : '<p>Неверный логин пароль</p>';
 else:
+
+
     ?>
 
 <form class="log" method="post" action = "<?=$_SERVER['PHP_SELF']?>" >
@@ -54,7 +104,10 @@ else:
 
 </form>
 
-<? endif;?>
+<? endif;
+
+
+?>
 <hr color="red">
 <div>
 
@@ -181,27 +234,6 @@ if ($su < 8) {
 </form>
 </body>
 <?
-if (isset($_POST["submit5"])) {
 
-    if ($_POST['color'] == 1) {
-        $bg = "blue";
-        $_COOKIE['color'] = $bg;}
-    if ($_POST['color'] == 2) {
-        $bg = "green";
-        $_COOKIE['color'] = $bg;}
-    if ($_POST['color'] == 3) {
-        $bg = "yellow";
-        $_COOKIE['color'] = $bg;}
-    if ($_POST['color'] == 4) {
-        $bg = "red";
-        $_COOKIE['color'] = $bg;}
-}
-else {
-    $bg = "white";
-    $_COOKIE['color'] = $bg;
-}
-
-$bg = $_COOKIE['color'];
-print_r($_COOKIE);
 require_once '../inc/footer.php' ?>
 </html>
