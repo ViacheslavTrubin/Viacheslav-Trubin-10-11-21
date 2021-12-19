@@ -1,6 +1,14 @@
 <?php
 require_once '../inc/header.php';
+require_once 'zap.php';
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+$par = new zap('$login', '$password');
+$par->proverka();
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 session_start();
+
+
 
 if (isset($_POST["submit5"])) {
 
@@ -24,26 +32,62 @@ else {
 
 $bg = $_COOKIE['color'];
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//error_reporting(E_ALL);
+//ini_set('display_errors', 1);
+//
+//$hostname = 'localhost';
+//$username = 'Viacheslav';
+//$password = '58371234';
+//$dbname = 'Logins';
+//
+//$dbconnect = mysqli_connect($hostname,$username, $password) or die ("Not connect");
+////var_dump($dbconnect);
+//$database = mysqli_select_db($dbconnect, $dbname) or die("Could not do");
+//
+//mysqli_set_charset($dbconnect, 'utf8');
+//mysqli_query($dbconnect, "CREATE DATABASE $dbname");
+//$login2 = $_POST['login'];
+//$password2 = md5($_POST['password']);
+//if (!empty($_POST)) {
+//    mysqli_query($database, "CREATE TABLE Vvod (ID_nomer int not NULL AUTO_INCREMENT, Login string, Password string, PRIMARY KEY (ID_nomer))");
+//    mysqli_query($database, "INSERT INTO VVod (ID_nomer, Login, Password) VALUES (null, $login2  , $password2)");
+//}
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 
-$hostname = 'localhost';
-$username = 'Viacheslav';
-$password = '58371234';
-$dbname = 'Logins';
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-$dbconnect = mysqli_connect($hostname,$username, $password) or die ("Not connect");
-//var_dump($dbconnect);
-$database = mysqli_select_db($dbconnect, $dbname) or die("Could not do");
+if (isset($_POST['login']) && isset($_POST['password'])){
 
-mysqli_set_charset($dbconnect, 'utf8');
-mysqli_query($dbconnect, "CREATE DATABASE $dbname");
-$login2 = $_POST['login'];
-$password2 = md5($_POST['password']);
-if (!empty($_POST)) {
-    mysqli_query($database, "CREATE TABLE Vvod (ID_nomer int not NULL AUTO_INCREMENT, Login string, Password string, PRIMARY KEY (ID_nomer))");
-    mysqli_query($database, "INSERT INTO VVod (ID_nomer, Login, Password) VALUES (null, $login2  , $password2)");
+    $login2 = $_POST['login'];
+    $password2 = md5($_POST['password']);
+
+    // Параметры для подключения
+    $db_host = "localhost";
+    $db_user = "Viacheslav";
+    $db_password = "58371234";
+    $db_base = 'Logins';
+    $db_table = "Vvod";
+
+    try {
+
+        $db = new PDO("mysql:host=$db_host;dbname=$db_base", $db_user, $db_password);
+
+        $db->exec("set names utf8");
+
+        $data = array( 'login' => $login2, 'password' => $password2 );
+
+        $query = $db->prepare("INSERT INTO $db_table (login, password) values (:login, :password)");
+
+        $query->execute($data);
+
+        $result = true;
+    } catch (PDOException $e) {
+           print "Ошибка!: " . $e->getMessage() . "<br/>";
+    }
+
+    if ($result) {
+        echo "Успех. Информация занесена в базу данных";
+    }
 }
 
 
@@ -84,13 +128,13 @@ setcookie('color', $_COOKIE['color'] , time() + 3600 * 24 * 7);
 
     }</style>
 <?php
-      if(isset($_POST['submit'])):
-    $name2 = sha1($_POST['login']);
-    $passwd2 = sha1($_POST['password']);
-    echo ($name == $name2 && $passwd == $passwd2) ? '<p>Доступ открыт Добро пожаловать АДМИН</p> 
-<p>Последний посещенный сайт</p>'. $_COOKIE['site']
-          : '<p>Неверный логин пароль</p>';
-else:
+//      if(isset($_POST['submit'])):
+//    $name2 = sha1($_POST['login']);
+//    $passwd2 = sha1($_POST['password']);
+//    echo ($name == $name2 && $passwd == $passwd2) ? '<p>Доступ открыт Добро пожаловать АДМИН</p>
+//<p>Последний посещенный сайт</p>'. $_COOKIE['site']
+//          : '<p>Неверный логин пароль</p>';
+//else:
 
 
     ?>
@@ -104,7 +148,7 @@ else:
 
 </form>
 
-<? endif;
+<?// endif;
 
 
 ?>
